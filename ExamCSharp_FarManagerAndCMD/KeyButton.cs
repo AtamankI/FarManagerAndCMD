@@ -44,7 +44,7 @@ namespace ExamCSharp_FarManagerAndCMD
         private const int width = 105, height = 47, step = 4;
         private static void Exit(string left, string right, bool side, string file)
         {
-            Console.SetCursorPosition(90, 30);
+            Console.SetCursorPosition(height*2, height/2);
             Console.Write("EXIT\t");
             Environment.Exit(0);
         }
@@ -63,25 +63,25 @@ namespace ExamCSharp_FarManagerAndCMD
             Console.WriteLine("...");
             foreach (string dir in dirs)
             {
-                Console.SetCursorPosition(j, i + 4);
+                Console.SetCursorPosition(j, i + step);
                 Console.WriteLine($"{Path.GetFileNameWithoutExtension(dir),-30} {File.GetAttributes(dir)}");
                 i++;
             }
             string[] fileEntries = Directory.GetFiles(targetDirectory);
             foreach (string fileName in fileEntries)
             {
-                Console.SetCursorPosition(j, i + 4);
+                Console.SetCursorPosition(j, i + step);
                 Console.WriteLine($"{Path.GetFileName(fileName),-30} {File.GetAttributes(fileName)}");
                 i++;
             }
-            Console.SetCursorPosition(j, i + 4);
+            Console.SetCursorPosition(j, i + step);
             Console.ReadKey();
         }
 
         private static void RenameFilesAndDirectories(string targetDirectory, string right, bool side, string file)
         {
-            int i = 20, j = 30;
-            if (side == false) j = 120;
+            int i = height / 2, j = height / 2;
+            if (side == false) j = width + height / 2;
             Console.SetCursorPosition(j++, i++);
             Console.WriteLine($"Enter The new name-> ");
             Console.SetCursorPosition(j++, i++);
